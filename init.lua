@@ -199,7 +199,7 @@ register_gear("gear3d:cage_female_small", {
 	length = 2,
 	selection = {-0.5, -0.5, -0.32, 0.5, 0.5, 0.32},
 	on = "gear3d_cage_female_small.png",
-	off = "gear3d_cage_female_small.png^[verticalframe:12:0",
+	off = "gear3d_cage_female_small.png^[verticalframe:24:0",
 })
 
 register_gear("gear3d:cage_female_large", {
