@@ -8,7 +8,7 @@ function gear3d.register_machine(basename, machine_def, shared_def, inact_def, a
   if broken_def then
     machine_def.node_name_broken = basename.."_broken"
   end
-  machine_def.__rev_def = rev_def
+  machine_def.__node_def_rev = rev_def
   local gear_machine = appliances.appliance:new(machine_def)
   
   gear_machine:power_data_register(
@@ -31,10 +31,13 @@ function gear3d.register_machine(basename, machine_def, shared_def, inact_def, a
   end
   
   function gear_machine:running(pos, meta)
-    if (meta:get_int("L")>=0) then
+    local L = meta:get_int("L")
+    if (L>0) then
       appliances.swap_node(pos, self.node_name_active)
-    else
+    elseif (L<0) then
       appliances.swap_node(pos, self.node_name_reverse)
+    else
+      appliances.swap_node(pos, self.node_name_inactive)
     end
     self:power_need(pos, meta)
     meta:set_string(self.meta_infotext, self:get_infotext(pos, meta, "running"))

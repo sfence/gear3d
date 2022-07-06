@@ -5,7 +5,7 @@ local _shaft_sides = {"front", "back"}
 local _shaft_types = {front="gear3d_small_wood",back="gear3d_small_wood"}
 local _shaft_opposites = {back=true}
 
-gear3d.register_machine("gear3d:spur_grear_wood_small",
+gear3d.register_machine("gear3d:spur_gear_wood_small",
   {
     -- machine def
 	  node_description = S("Wood Small Spur Gear"),
@@ -50,6 +50,19 @@ gear3d.register_machine("gear3d:spur_grear_wood_small",
     tiles = {
       {
         image = "gear3d_spur_gear_fwd.png",
+        animation = {
+          type = "vertical_frames",
+          aspect_w = 240,
+          aspect_h = 16,
+          length = 2.
+        },
+      },
+    },
+  },{
+    -- reverse node def
+    tiles = {
+      {
+        image = "gear3d_spur_gear_rev.png",
         animation = {
           type = "vertical_frames",
           aspect_w = 240,

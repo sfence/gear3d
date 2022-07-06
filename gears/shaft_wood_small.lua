@@ -6,7 +6,7 @@ gear3d.register_shaft("gear3d:shaft_wood_small", {
 	  drawtype = "mesh",
 	  mesh = "gear3d_shaft_small.obj",
     tiles = {
-	    "gear3d_shaft_small.png^[verticalframe:12:0",
+	    "gear3d_shaft_small_fwd.png^[verticalframe:12:0",
     },
     paramtype = "light",
     paramtype2 = "facedir",
@@ -39,7 +39,7 @@ gear3d.register_shaft("gear3d:shaft_wood_small", {
   },{
     tiles = {
       {
-	      image = "gear3d_shaft_small.png",
+	      image = "gear3d_shaft_small_rev.png",
         animation = {
           type = "vertical_frames",
           aspect_w = 48,

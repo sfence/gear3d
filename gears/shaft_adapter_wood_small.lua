@@ -47,7 +47,7 @@ gear3d.register_machine("gear3d:shaft_adapter_wood_small_fwd",
       "power_generators_frame_steel.png",
       "power_generators_shaft_steel.png",
       "power_generators_body_steel.png^gear3d_shaft_adapter_arrow_fwd.png",
-      "gear3d_shaft_small.png^[verticalframe:12:0",
+      "gear3d_shaft_small_fwd.png^[verticalframe:12:0",
     },
   },{
     -- active node def
@@ -56,7 +56,7 @@ gear3d.register_machine("gear3d:shaft_adapter_wood_small_fwd",
       "power_generators_shaft_steel.png",
       "power_generators_body_steel.png^gear3d_shaft_adapter_arrow_fwd.png",
       {
-        image = "gear3d_shaft_small_fwd.png",
+        image = "gear3d_shaft_small_rev.png",
         animation = {
           type = "vertical_frames",
           aspect_w = 48,
@@ -72,7 +72,7 @@ gear3d.register_machine("gear3d:shaft_adapter_wood_small_fwd",
       "power_generators_shaft_steel.png",
       "power_generators_body_steel.png^gear3d_shaft_adapter_arrow_fwd.png",
       {
-        image = "gear3d_shaft_small.png",
+        image = "gear3d_shaft_small_fwd.png",
         animation = {
           type = "vertical_frames",
           aspect_w = 48,
@@ -91,9 +91,11 @@ gear3d.register_machine("gear3d:shaft_adapter_wood_small_fwd",
       "power_generators_frame_steel.png",
       "power_generators_shaft_steel.png",
       "power_generators_body_steel.png^gear3d_shaft_adapter_arrow_fwd.png",
-      "gear3d_shaft_small.png^[verticalframe:12:0",
+      "gear3d_shaft_small_fwd.png^[verticalframe:12:0",
     },
   })
+
+local _shaft_opposites_rev = {}
 
 gear3d.register_machine("gear3d:shaft_adapter_wood_small_rev",
   {
@@ -109,6 +111,7 @@ gear3d.register_machine("gear3d:shaft_adapter_wood_small_rev",
     
     _shaft_sides = _shaft_sides,
     _shaft_types = _shaft_types,
+    _shaft_opposites = _shaft_opposites_rev,
     _friction = 0.0025,
     _I = 225,
     
@@ -128,13 +131,14 @@ gear3d.register_machine("gear3d:shaft_adapter_wood_small_rev",
     
     _shaft_sides = _shaft_sides,
     _shaft_types = _shaft_types,
+    _shaft_opposites = _shaft_opposites_rev,
   },{
     -- inactive node def
     tiles = {
       "power_generators_frame_steel.png",
       "power_generators_shaft_steel.png",
       "power_generators_body_steel.png^gear3d_shaft_adapter_arrow_rev.png",
-      "gear3d_shaft_small.png^[verticalframe:12:0",
+      "gear3d_shaft_small_fwd.png^[verticalframe:12:0",
     },
   },{
     -- active node def
@@ -143,7 +147,7 @@ gear3d.register_machine("gear3d:shaft_adapter_wood_small_rev",
       "power_generators_shaft_steel.png",
       "power_generators_body_steel.png^gear3d_shaft_adapter_arrow_rev.png",
       {
-        image = "gear3d_shaft_small.png",
+        image = "gear3d_shaft_small_fwd.png",
         animation = {
           type = "vertical_frames",
           aspect_w = 48,
@@ -159,7 +163,7 @@ gear3d.register_machine("gear3d:shaft_adapter_wood_small_rev",
       "power_generators_shaft_steel.png",
       "power_generators_body_steel.png^gear3d_shaft_adapter_arrow_rev.png",
       {
-        image = "gear3d_shaft_small_fwd.png",
+        image = "gear3d_shaft_small_rev.png",
         animation = {
           type = "vertical_frames",
           aspect_w = 48,
@@ -178,7 +182,7 @@ gear3d.register_machine("gear3d:shaft_adapter_wood_small_rev",
       "power_generators_frame_steel.png",
       "power_generators_shaft_steel.png",
       "power_generators_body_steel.png^gear3d_shaft_adapter_arrow_rev.png",
-      "gear3d_shaft_small.png^[verticalframe:12:0",
+      "gear3d_shaft_small_fwd.png^[verticalframe:12:0",
     },
   })
 
