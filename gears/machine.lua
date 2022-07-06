@@ -61,8 +61,9 @@ function gear3d.register_machine(basename, machine_def, shared_def, inact_def, a
     power_generators.shaft_step(self, pos, meta, nil)
   end
   
-  function gear_machine:shaft_break(node, pos, meta)
+  function gear_machine:shaft_break(pos, node, meta)
     -- make a sound, change node
+    print("Shaft node "..(node.name).." break!")
   end
   
   gear_machine:register_nodes(shared_def, inact_def, act_def)

@@ -3,6 +3,7 @@ local S = gear3d.translator
 
 local _shaft_sides = {"front", "back"}
 local _shaft_types = {front="gear3d_small_wood",back="gear3d_small_wood"}
+local _shaft_opposites = {back=true}
 
 gear3d.register_machine("gear3d:spur_grear_wood_small",
   {
@@ -18,6 +19,7 @@ gear3d.register_machine("gear3d:spur_grear_wood_small",
     
     _shaft_sides = _shaft_sides,
     _shaft_types = _shaft_types,
+    _shaft_opposites = _shaft_opposites,
     _friction = 0.0025,
     _I = 225,
     
@@ -31,11 +33,13 @@ gear3d.register_machine("gear3d:spur_grear_wood_small",
     drawtype = "mesh",
     mesh = "gear3d_spur_gear.obj",
     use_texture_alpha = "clip",
+    paramtype = "light",
     paramtype2 = "facedir",
     selectionbox = {-0.5, -0.5, -0.25, 0.5, 0.5, 0.25},
     groups = {cracky = 2, shaft = 1, greasable = 1},
     _shaft_sides = _shaft_sides,
     _shaft_types = _shaft_types,
+    _shaft_opposites = _shaft_opposites,
   },{
     -- inactive node def
     tiles = {
