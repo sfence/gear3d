@@ -108,8 +108,8 @@ register_gear("gear3d:shaft_small", {
 	aspect_h = 20,
 	length = 1,
 	selection = {-0.5, -0.5, -0.5, 0.5, 0.5, 0.5},
-	on = "gear3d_shaft_small.png",
-	off = "gear3d_shaft_small.png^[verticalframe:12:0",
+	on = "gear3d_shaft_small_fwd.png",
+	off = "gear3d_shaft_small_fwd.png^[verticalframe:12:0",
 })
 
 register_gear("gear3d:windsail_turning", {
