@@ -198,8 +198,8 @@ register_gear("gear3d:cage_female_small", {
 	aspect_h = 16,
 	length = 2,
 	selection = {-0.5, -0.5, -0.32, 0.5, 0.5, 0.32},
-	on = "gear3d_cage_female_small.png",
-	off = "gear3d_cage_female_small.png^[verticalframe:24:0",
+	on = "gear3d_cage_female_small_fwd.png",
+	off = "gear3d_cage_female_small_fwd.png^[verticalframe:24:0",
 })
 
 register_gear("gear3d:cage_female_large", {
@@ -210,8 +210,8 @@ register_gear("gear3d:cage_female_large", {
 	aspect_h = 16,
 	length = 1,
 	selection = {-0.75, -0.75, -0.32, 0.75, 0.75, 0.32},
-	on = "gear3d_cage_female_large.png",
-	off = "gear3d_cage_female_large.png^[verticalframe:12:0",
+	on = "gear3d_cage_female_large_fwd.png",
+	off = "gear3d_cage_female_large_fwd.png^[verticalframe:12:0",
 })
 
 register_gear("gear3d:cage_male_single", {

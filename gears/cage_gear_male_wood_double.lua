@@ -2,11 +2,11 @@
 local S = gear3d.translator
 
 local _shaft_sides = {"front", "back", "top","bottom","right","left"}
-local _shaft_types = {front="gear3d_small_wood",back="gear3d_small_wood",top="gear3d_spur",bottom="gear3d_spur",right="gear3d_spur",left="gear3d_spur"}
+local _shaft_types = {front="gear3d_small_wood",back="gear3d_small_wood",top="gear3d_cage_male_double",bottom="gear3d_cage_male_double",right="gear3d_cage_male_double",left="gear3d_cage_male_double"}
 local _shaft_opposites = {back=true,bottom=true,left=true}
 
-local function spur_find_side_shafts(shafts, need_rpm_update, top_data, side_data)
-  if side_data.shaft_type=="gear3d_spur" then
+local function cage_find_side_shafts(shafts, need_rpm_update, top_data, side_data)
+  if side_data.shaft_type=="gear3d_cage_male_double" then
     -- special side code
     local side = side_data.side
     local side_pos = side_data.side_pos
@@ -26,7 +26,7 @@ local function spur_find_side_shafts(shafts, need_rpm_update, top_data, side_dat
     if not side_side then
       return
     end
-    if (side_def._shaft_types[side_side]~=shaft_type) then
+    if (side_def._shaft_types[side_side]~="gear3d_cage_male_double") then
       return
     end
     local side_meta = minetest.get_meta(side_pos)
@@ -79,7 +79,6 @@ local function spur_find_side_shafts(shafts, need_rpm_update, top_data, side_dat
         
         --[[
         name = side_node.name,
-        pos = side_pos,
         fric = o_F,
         side_TPart = TPart,
         --]]
@@ -103,20 +102,12 @@ local function spur_find_side_shafts(shafts, need_rpm_update, top_data, side_dat
   else
     power_generators.default_find_side_shafts(shafts, need_rpm_update, top_data, side_data)
   end
-  --[[
-  local node = minetest.get_node(top_data.pos)
-  if node.name=="gear3d:spur_gear_wood_small_rev" then
-    print("pos: "..minetest.pos_to_string(top_data.pos).." node: "..node.name)
-    print(dump(shafts))
-    print(dump(need_rpm_update))
-  end
-  --]]
 end
 
-gear3d.register_machine("gear3d:spur_gear_wood_small",
+gear3d.register_machine("gear3d:cage_gear_male_wood_double",
   {
     -- machine def
-	  node_description = S("Wood Small Spur Gear"),
+	  node_description = S("Wood Double Male Cage Gear"),
     node_help = S("Can be greased."),
     
     input_stack_size = 0,
@@ -128,7 +119,7 @@ gear3d.register_machine("gear3d:spur_gear_wood_small",
     _shaft_sides = _shaft_sides,
     _shaft_types = _shaft_types,
     _shaft_opposites = _shaft_opposites,
-    _shaft_find_side_shafts = spur_find_side_shafts,
+    _shaft_find_side_shafts = cage_find_side_shafts,
     _friction = 0.0025,
     _I = 225,
     
@@ -140,7 +131,7 @@ gear3d.register_machine("gear3d:spur_gear_wood_small",
   },{
     -- node def
     drawtype = "mesh",
-    mesh = "gear3d_spur_gear.obj",
+    mesh = "gear3d_cage_male_double.obj",
     use_texture_alpha = "clip",
     paramtype = "light",
     paramtype2 = "facedir",
@@ -152,17 +143,17 @@ gear3d.register_machine("gear3d:spur_gear_wood_small",
   },{
     -- inactive node def
     tiles = {
-      "gear3d_spur_gear_fwd.png^[verticalframe:24:0",
+      "gear3d_cage_male_single_fwd.png^[verticalframe:24:0",
     },
   },{
     -- active node def
     tiles = {
       {
-        image = "gear3d_spur_gear_fwd.png",
+        image = "gear3d_cage_male_single_fwd.png",
         animation = {
           type = "vertical_frames",
-          aspect_w = 240,
-          aspect_h = 16,
+          aspect_w = 192,
+          aspect_h = 20,
           length = 2.
         },
       },
@@ -171,21 +162,22 @@ gear3d.register_machine("gear3d:spur_gear_wood_small",
     -- reverse node def
     tiles = {
       {
-        image = "gear3d_spur_gear_rev.png",
+        image = "gear3d_cage_male_single_rev.png",
         animation = {
           type = "vertical_frames",
-          aspect_w = 240,
-          aspect_h = 16,
+          aspect_w = 192,
+          aspect_h = 20,
           length = 2.
         },
       },
     },
   },{
     -- broken node def
-    description = S("Broken Wood Small Spur Gear"),
+    description = S("Broken Wood Double Male Cage Gear"),
     drawtype = "mesh",
-    mesh = "gear3d_spur_gear.obj",
+    mesh = "gear3d_cage_male_double.obj",
     selectionbox = {-0.5, -0.5, -0.25, 0.5, 0.5, 0.25},
-    tiles = "gear3d_spur_gear_fwd.png^[verticalframe:24:1",
+    tiles = "gear3d_cage_male_single_fwd.png^[verticalframe:24:1",
   })
+
 

@@ -56,6 +56,14 @@ function gear3d.register_machine(basename, machine_def, shared_def, inact_def, a
     minetest.register_node(self.node_name_reverse, node_def_rev)
   end
   
+  function gear_machine:get_infotext(_, _, state)
+    if state=="running" then
+      return self.node_description.." - "..S("working")
+    else
+      return self.node_description.." - "..appliances.state_infotexts[state]
+    end
+  end
+  
   function gear_machine:cb_on_production(timer_step)
     power_generators.shaft_step(self, timer_step.pos, timer_step.meta, timer_step.use_usage)
   end
