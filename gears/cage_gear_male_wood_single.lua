@@ -2,15 +2,15 @@
 local S = gear3d.translator
 
 local _shaft_sides = {"front", "back", "top","bottom","right","left"}
-local _shaft_types = {front="gear3d_small_wood",back="gear3d_small_wood",top="gear3d_cage_female_small",bottom="gear3d_cage_female_small",right="gear3d_cage_female_small",left="gear3d_cage_female_small"}
+local _shaft_types = {front="gear3d_small_wood",back="gear3d_small_wood",top="gear3d_cage_male_single",bottom="gear3d_cage_male_single",right="gear3d_cage_male_single",left="gear3d_cage_male_single"}
 local _shaft_opposites = {back=true,bottom=true,left=true}
 
 local function cage_find_side_shafts(shafts, need_rpm_update, top_data, side_data)
-  if side_data.shaft_type=="gear3d_cage_female_small" then
+  if side_data.shaft_type=="gear3d_cage_male_single" then
     -- special side code
     local side = side_data.side
     local from_pos = side_data.from_pos
-    for _,side2 in pairs({"front","back"}) do
+    for _,side2 in pairs({"back"}) do
       local side_pos = appliances.get_sides_pos(top_data.pos, top_data.node, {side, side2})
       local side_node = minetest.get_node(side_pos)
       local TPart = side_data.TPart
@@ -28,15 +28,10 @@ local function cage_find_side_shafts(shafts, need_rpm_update, top_data, side_dat
         return
       end
       --print("side "..side.." side_side: "..side_side.." type: "..side_def._shaft_types[side_side].." from: "..minetest.pos_to_string(side_data.side_pos))
-      if (side_def._shaft_types[side_side]~="gear3d_cage_male_single") then
+      if (side_def._shaft_types[side_side]~="gear3d_cage_female_small") then
         return
       end
       --print("side "..side.." node: "..dump(side_node.name).." on "..minetest.pos_to_string(side_pos))
-      
-      local back_pos = appliances.get_sides_pos(side_pos, side_node, {side_side, "back"})
-      if not vector.equals(back_pos, top_data.pos) then
-        return
-      end
       local side_meta = minetest.get_meta(side_pos)
       if shaft==1 then
         local o_I = side_meta:get_int("Isum")
@@ -113,10 +108,10 @@ local function cage_find_side_shafts(shafts, need_rpm_update, top_data, side_dat
   end
 end
 
-gear3d.register_machine("gear3d:cage_gear_female_wood_small",
+gear3d.register_machine("gear3d:cage_gear_male_wood_single",
   {
     -- machine def
-	  node_description = S("Wood Small Female Cage Gear"),
+	  node_description = S("Wood Single Male Cage Gear"),
     node_help = S("Can be greased."),
     
     input_stack_size = 0,
@@ -140,7 +135,7 @@ gear3d.register_machine("gear3d:cage_gear_female_wood_small",
   },{
     -- node def
     drawtype = "mesh",
-    mesh = "gear3d_cage_female_small.obj",
+    mesh = "gear3d_cage_male_single.obj",
     use_texture_alpha = "clip",
     paramtype = "light",
     paramtype2 = "facedir",
@@ -152,18 +147,18 @@ gear3d.register_machine("gear3d:cage_gear_female_wood_small",
   },{
     -- inactive node def
     tiles = {
-      "gear3d_cage_female_small_fwd.png^[verticalframe:24:0",
+      "gear3d_cage_male_single_fwd.png^[verticalframe:24:0",
     },
   },{
     -- active node def
     tiles = {
       {
-        image = "gear3d_cage_female_small_fwd.png",
+        image = "gear3d_cage_male_single_fwd.png",
         animation = {
           type = "vertical_frames",
-          aspect_w = 264,
-          aspect_h = 16,
-          length = 2.
+          aspect_w = 192,
+          aspect_h = 20,
+          length = 1.
         },
       },
     },
@@ -171,22 +166,22 @@ gear3d.register_machine("gear3d:cage_gear_female_wood_small",
     -- reverse node def
     tiles = {
       {
-        image = "gear3d_cage_female_small_rev.png",
+        image = "gear3d_cage_male_single_rev.png",
         animation = {
           type = "vertical_frames",
-          aspect_w = 264,
-          aspect_h = 16,
-          length = 2.
+          aspect_w = 192,
+          aspect_h = 20,
+          length = 1.
         },
       },
     },
   },{
     -- broken node def
-    description = S("Broken Wood Small Female Cage Gear"),
+    description = S("Broken Wood Single Male Cage Gear"),
     drawtype = "mesh",
-    mesh = "gear3d_cage_female_small.obj",
+    mesh = "gear3d_cage_male_single.obj",
     selectionbox = {-0.5, -0.5, -0.25, 0.5, 0.5, 0.25},
-    tiles = "gear3d_cage_female_small_fwd.png^[verticalframe:24:1",
+    tiles = "gear3d_cage_male_single_fwd.png^[verticalframe:24:1",
   })
 
 

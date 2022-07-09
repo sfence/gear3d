@@ -75,6 +75,12 @@ function gear3d.register_machine(basename, machine_def, shared_def, inact_def, a
   function gear_machine:shaft_break(pos, node, meta)
     -- make a sound, change node
     print("Shaft node "..(node.name).." break!")
+    if self.node_name_broken then
+      appliances.swap_node(pos, self.node_name_inactive)
+    else
+      minetest.remove_node(pos)
+      minetest.add_item(pos, ItemStack(self.node_name_inactive))
+    end
   end
   
   gear_machine:register_nodes(shared_def, inact_def, act_def)
