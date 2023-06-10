@@ -3,9 +3,9 @@ local S = gear3d.translator
 
 local _shaft_sides = {"front", "back", "top","bottom","right","left"}
 local _shaft_types = {front="gear3d_small_wood",back="gear3d_small_wood",left="gear3d_chain",right="gear3d_chain"}
-local _shaft_opposites = {back=true,top=true}
+local _shaft_opposites = {back=true, right=true}
 local _sprocket_full_side = {
-    top = {"top","left"},
+    left = {"left","bottom"},
     right = {"right","bottom"}
   }
 

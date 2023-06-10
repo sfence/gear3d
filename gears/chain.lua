@@ -100,14 +100,16 @@ function gear3d.sprocket_find_side_shafts(shafts, need_rpm_update, top_data, sid
               local engine_side = top_data.meta:get_int(side.."_engine")
               local engine_side_side = side_meta:get_int(side_side.."_engine")
               
-              local o_rpm_opposite = false
+              local o_rpm_opposite = true
               if top_data._shaft_opposites and side_def._shaft_opposites then
+                --[[
                 if not top_data._shaft_opposites[side] then
                   o_rpm_opposite = true
                 end
                 if side_def._shaft_opposites[side_side] then
                   o_rpm_opposite = not o_rpm_opposite
                 end
+                --]]
                 if o_rpm_opposite then
                   if (top_data.rpm>0) and (o_rpm>0) then
                     top_data.rpm_opposite = true
@@ -115,12 +117,10 @@ function gear3d.sprocket_find_side_shafts(shafts, need_rpm_update, top_data, sid
                     top_data.rpm_opposite = true
                   end
                 else
-                  if (top_data.rpm>0) then
                   if (top_data.rpm>0) and (o_rpm<0) then
                     top_data.rpm_opposite = true
                   elseif (top_data.rpm<0) and (o_rpm>0) then
                     top_data.rpm_opposite = true
-                  end
                   end
                 end
               end
@@ -155,7 +155,7 @@ function gear3d.sprocket_find_side_shafts(shafts, need_rpm_update, top_data, sid
               else
                 --Tpwr = Tpwr + o_T*ratio
                 if top_data.rpmPwr>0 then
-                  top_data.rpmPwr = math.min(rpmPwr, o_rpm/ratio)
+                  top_data.rpmPwr = math.min(top_data.rpmPwr, o_rpm/ratio)
                 else
                   top_data.rpmPwr = o_rpm/ratio
                 end
